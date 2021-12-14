@@ -26,3 +26,38 @@ address.addEventListener('input', function() {
     if (addressRegex.test(address.value)) addressError.textContent = "";
     else addressError.textContent = "Address is Incorrect";
 })
+
+//on save
+const save = () => {
+    let contactList = createEmployeePayroll();
+    createAndUpdateStorage(contactList);
+};
+
+const createEmployeePayroll = () => {
+    let contactList = new AddressBookContact();
+
+    contactList.name = getInputValueById('#name');
+    contactList.phone = getInputValueById('#phone');
+    contactList.address = getInputValueById('#address');
+    contactList.city = getInputValueById('#city');
+    contactList.state = getInputValueById('#state');
+    contactList.zip = getInputValueById('#zip');
+    alert(contactList.toString());
+    return contactList;
+}
+
+const getInputValueById = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+function createAndUpdateStorage(contactList) {
+    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
+    if (addressBookList != undefined) {
+        addressBookList.push(contactList);
+    } else {
+        addressBookList = [contactList];
+    }
+    alert(addressBookList.toString());
+    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
+}
