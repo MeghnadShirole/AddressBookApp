@@ -125,3 +125,10 @@ label {
     width: 300px;
     margin-right: 10px;
 }
+
+error-output {
+    margin-left: 10px;
+    font-size: 14px;
+    font-style: normal;
+    color: red;
+}
