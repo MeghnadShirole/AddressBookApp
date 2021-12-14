@@ -29,11 +29,11 @@ address.addEventListener('input', function() {
 
 //on save
 const save = () => {
-    let contactList = createEmployeePayroll();
-    createAndUpdateStorage(contactList);
+    let contactList = createAddressBook();
 };
 
-const createEmployeePayroll = () => {
+const createAddressBook = () => {
+
     let contactList = new AddressBookContact();
 
     contactList.name = getInputValueById('#name');
@@ -44,20 +44,9 @@ const createEmployeePayroll = () => {
     contactList.zip = getInputValueById('#zip');
     alert(contactList.toString());
     return contactList;
-}
+};
 
 const getInputValueById = (id) => {
     let value = document.querySelector(id).value;
     return value;
-}
-
-function createAndUpdateStorage(contactList) {
-    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
-    if (addressBookList != undefined) {
-        addressBookList.push(contactList);
-    } else {
-        addressBookList = [contactList];
-    }
-    alert(addressBookList.toString());
-    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
-}
+};
