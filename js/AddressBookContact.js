@@ -13,9 +13,6 @@ class AddressBookContact {
     }
 
     set name(name) {
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}[ : ][A-Z]{1}[a-z]{2,}$');
-        if (nameRegex.test(name.value)) nameError.textContent = "";
-        else nameError.textContent = "Name is Incorrect";
         this._name = name;
     }
 
@@ -24,9 +21,6 @@ class AddressBookContact {
     }
 
     set phone(phone) {
-        let phoneRegex = RegExp('^(?=.+)[0-9]{0,3}[0-9]{10}$');
-        if (phoneRegex.test(phone.value)) phoneError.textContent = "";
-        else phoneError.textContent = "Phone Number is Incorrect";
         this._phone = phone;
     }
 
@@ -35,9 +29,6 @@ class AddressBookContact {
     }
 
     set address(address) {
-        let addressRegex = RegExp('.*');
-        if (addressRegex.test(address.value)) addressError.textContent = "";
-        else addressError.textContent = "Address is Incorrect";
         this._address = address;
     }
 
