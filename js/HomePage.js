@@ -1,3 +1,4 @@
+let addressBookContactList;
 window.addEventListener('DOMContentLoaded', (event) => {
     addressBookContactList = getAddressBookContactListFromStorage();
     document.querySelector(".person-count").textContent = addressBookContactList.length;
@@ -36,4 +37,17 @@ const createInnerHtml = () => {
         `;
     }
     document.querySelector("#display").innerHTML = innerHtml;
+};
+
+//Remove Entry from LocalStorage
+const remove = (node) => {
+    let contactData = addressBookContactList.find(contact => contact._id == node.id);
+    if (!contactData) return;
+    const index = addressBookContactList
+        .map(contact => contact._id)
+        .indexOf(contactData._id);
+    addressBookContactList.splice(index, 1);
+    localStorage.setItem("AddressBookList", JSON.stringify(addressBookContactList));
+    document.querySelector(".person-count").textContent = addressBookContactList.length;
+    createInnerHtml();
 };

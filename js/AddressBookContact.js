@@ -1,13 +1,12 @@
 class AddressBookContact {
 
-    constructor(name, phone, address, city, state, zip) {
-        this.name;
-        this.phone;
-        this.address;
-        this.city;
-        this.state;
-        this.zip;
+    get id() {
+        return this._id;
     }
+    set id(id) {
+        this._id = id;
+    }
+
     get name() {
         return this._name;
     }
@@ -57,7 +56,7 @@ class AddressBookContact {
     }
 
     toString() {
-        return 'Name = ' + this.name + ", Phone = " + this.phone + ", Address = " + this.address +
-            ", City = " + this.city + ", State = " + this.state + ", Zip Code = " + this.zip;
+        return "[id = " + this.id + ", Name = " + this.name + ", Phone = " + this.phone + ", Address = " + this.address +
+            ", City = " + this.city + ", State = " + this.state + ", Zip Code = " + this.zip + " ]" + "\n ";
     }
 }
